@@ -1,0 +1,146 @@
+html{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+main{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* navegation  */
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 76px;
+    z-index: 999;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.navegation a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    text-transform: uppercase;
+}
+
+.toggleMenu{
+    font-size: 3rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+.logo{
+    width: auto;
+    height: 70px;
+}
+
+@media screen and (max-width: 768px){
+    .logo{
+        height: 50px;
+    }
+
+    .header{
+        max-width: 760px;
+        margin: 0 auto;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navegation{
+        position: absolute;
+        top: 76px;
+        left: 0px;
+        height: calc(100vh - 70px);
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        background-color: white;
+        transition: .5s ease;
+        transform: scale3d(0,0,0);
+    }
+
+    .navegation a {
+        font-size: 2rem;
+        padding-bottom: 2rem;
+        transition: .4s ease;
+    }
+
+    .show-nav{
+        transform: scale3d(1,1,1);
+    }
+
+    .navegation a:hover{
+        background-color: 	#FF0000;
+        color: white;
+    }
+
+    .toggleMenu{
+        display: block;
+    }
+
+}
+
+
+
+/* herosection  */
+
+.herosection{
+    position: relative;
+    margin-top: 76px;
+    max-width: 1300px;
+
+    background-color:aquamarine;
+}
+
+
+section {
+    max-width: 1300px;
+    margin-top: 76px;
+    text-align: center;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2;
+}
+
+
+.grid img {
+    width: 200px;
+    height: 200px;
+}
