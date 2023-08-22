@@ -21,6 +21,33 @@ main{
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 80px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.6rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+p {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: justify;
 }
 
 /* navegation  */
@@ -114,57 +141,95 @@ main{
 }
 
 
-.herosection{
-    margin-top: 76px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    max-width: 1200px;
-}
-
 
 section {
     max-width: 1200px;
     margin-top: 76px;
-    padding-bottom: 3rem;
 }
 
+/* GRID  */
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
-  }
-  
-  .grid figure {
+}
+
+
+
+.grid figure {
     border: 5px solid #ccc;
     padding: 10px;
     text-align: center;
     border-radius: 1rem;
-  }
-  
-  .grid img {
-    max-width: 100%;
-    height: auto;
+    overflow: hidden;
     cursor: pointer;
-  }
-  
-  .grid figcaption {
+    background-color: #ffd000;
+}
+
+.grid img {
+    max-width: 180px;
+    height: 180px;
+}
+
+.grid figcaption {
     margin-top: 10px;
-  }
-  
-  .links {
+}
+
+
+.links {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    font-size: 2rem;
-  }
-  
-  .links a {
+    font-size: 3rem;
+}
+
+.links a {
     margin: 0 10px;
     text-decoration: none;
     color: #333;
     font-weight: bold;
+}
+
+
+
+
+
+
+/* LINEA DE TIEMPO */
+
+.timeline {
+    margin-top: 90px;
+    position: relative;
+    margin: 40px auto;
+    width: 80%;
+    border-left: 2px solid #ccc;
+    padding: 20px 0;
   }
   
+  .timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .timeline-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    font-size: 18px;
+    padding: .5rem;
+
+    background-color: #fff3bc;
+    border-radius: 10%;
+  }
+  
+  .timeline-content {
+    margin-left: 5rem;
+    background-color: 	#e4e4e4;
+    padding: 10px;
+    border-radius: 10px;
+    
+  }
