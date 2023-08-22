@@ -48,6 +48,14 @@ async function loadPokemons(url) {
     }
 
     $main.innerHTML = $template;
+
+
+    $prev = json.previous ? `<a href="${json.previous}">⏮️ </a>`: ""; 
+    $next = json.next ? `<a href="${json.next}"> ⏭️</a>`: "";
+
+   $links.innerHTML = $prev + "" + $next; 
+
+
   } catch (error) {
     console.log(error);
     let message = error.statusText || "Ocurrió un error";
@@ -56,3 +64,10 @@ async function loadPokemons(url) {
 }
 
 d.addEventListener("DOMContentLoaded", e => loadPokemons(PokeLink));
+
+d.addEventListener("click", e => {
+  if(e.target.matches(".links a")) {
+    e.preventDefault();
+    loadPokemons(e.target.getAttribute("href"));
+  }
+})
