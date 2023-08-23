@@ -60,6 +60,8 @@ p {
     height: 76px;
     z-index: 999;
     max-width: 1200px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     margin: 0 auto;
 
@@ -163,7 +165,6 @@ section {
     text-align: center;
     border-radius: 1rem;
     overflow: hidden;
-    cursor: pointer;
     background-color: #ffd000;
 }
 
@@ -173,7 +174,17 @@ section {
 }
 
 .grid figcaption {
-    margin-top: 10px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.Boton {
+    margin-top: 1rem;
+    padding: .5rem;
+    border-radius: 3rem;
+    background-color: coral;
+    font-size: 1rem; 
+    cursor: pointer;
 }
 
 
@@ -231,3 +242,48 @@ section {
     border-radius: 10px;
     
   }
+
+  .timeline-content img{
+    width:250px;
+  }
+
+/* TAB GALERY */
+
+.tabGallery{
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 70vw;
+    height: 85vh;
+    background-color: #ffd000;
+    border: 5px solid #e4e4e4;
+    border-radius: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 90px;
+    display: none;
+}
+
+.show-tab{
+    transform: scale3d(1,1,1);
+    display: block;
+}
+
+.tabGallery i {
+    font-size: 3rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.tabGallery i:hover {
+    font-size: 4rem;
+}

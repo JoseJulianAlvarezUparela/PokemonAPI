@@ -43,6 +43,7 @@ async function loadPokemons(url) {
           <figure>
               <figcaption>Error ${error.status} ${message}</figcaption>
           </figure>
+          
         `;
       }
     }
