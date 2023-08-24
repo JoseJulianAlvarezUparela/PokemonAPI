@@ -1,4 +1,4 @@
-export const d = document,
+const d = document,
   $main = d.querySelector("section"),
   $links = d.querySelector(".links");
 
