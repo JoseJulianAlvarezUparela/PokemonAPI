@@ -35,6 +35,8 @@ async function loadPokemons(url) {
               <figcaption>${pokemon.name}</figcaption>
           </figure>
         `;
+
+        
       } catch (error) {
         console.log(error);
         let message = error.statusText || "Ocurrió un error"; // Corregido "err" a "error"
@@ -72,3 +74,4 @@ d.addEventListener("click", e => {
     loadPokemons(e.target.getAttribute("href"));
   }
 })
+
