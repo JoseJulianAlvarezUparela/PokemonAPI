@@ -1,77 +1,73 @@
-const d = document,
-  $main = d.querySelector("section"),
-  $links = d.querySelector(".links");
+const listaPokemon = document.querySelector("#listaPokemon");
+const botonesHeader = document.querySelectorAll(".btn-header");
+let URL = "https://pokeapi.co/api/v2/pokemon/";
 
-const PokeLink = "https://pokeapi.co/api/v2/pokemon/";
-
-async function loadPokemons(url) {
-  try {
-    let res = await fetch(url);
-    let json = await res.json();
-    let $template = "",
-      $prev,
-      $next;
-
-    console.log(json);
-
-    $main.innerHTML = ""; 
-
-    if (!res.ok) throw { status: res.status, statusText: res.statusText };
-
-    for (let i = 0; i < json.results.length; i++) { 
-      console.log(json.results[i]);
-
-      try {
-        let res = await fetch(json.results[i].url);
-        let pokemon = await res.json();
-
-        console.log(res, pokemon);
-
-        if (!res.ok) throw { status: res.status, statusText: res.statusText };
-
-        $template += `
-          <figure>
-              <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
-              <figcaption>${pokemon.name}</figcaption>
-          </figure>
-        `;
-
-        
-      } catch (error) {
-        console.log(error);
-        let message = error.statusText || "Ocurrió un error"; // Corregido "err" a "error"
-
-        $template += `
-          <figure>
-              <figcaption>Error ${error.status} ${message}</figcaption>
-          </figure>
-          
-        `;
-      }
-    }
-
-    $main.innerHTML = $template;
-
-
-    $prev = json.previous ? `<a href="${json.previous}">⏮️ </a>`: ""; 
-    $next = json.next ? `<a href="${json.next}"> ⏭️</a>`: "";
-
-   $links.innerHTML = $prev + "" + $next; 
-
-
-  } catch (error) {
-    console.log(error);
-    let message = error.statusText || "Ocurrió un error";
-    $main.innerHTML = `<p> Error ${error.status} ${message} </p>`;
-  }
+for (let i = 1; i <= 151; i++) {
+    fetch(URL + i)
+        .then((response) => response.json())
+        .then(data => mostrarPokemon(data))
 }
 
-d.addEventListener("DOMContentLoaded", e => loadPokemons(PokeLink));
+function mostrarPokemon(poke) {
 
-d.addEventListener("click", e => {
-  if(e.target.matches(".links a")) {
-    e.preventDefault();
-    loadPokemons(e.target.getAttribute("href"));
-  }
-})
+    let tipos = poke.types.map((type) => `<p class="${type.type.name} tipo">${type.type.name}</p>`);
+    tipos = tipos.join('');
+
+    let pokeId = poke.id.toString();
+    if (pokeId.length === 1) {
+        pokeId = "00" + pokeId;
+    } else if (pokeId.length === 2) {
+        pokeId = "0" + pokeId;
+    }
+
+
+    const div = document.createElement("div");
+    div.classList.add("pokemon");
+    div.innerHTML = `
+        <p class="pokemon-id-back">#${pokeId}</p>
+        <div class="pokemon-imagen">
+            <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
+        </div>
+        <div class="pokemon-info">
+            <div class="nombre-contenedor">
+                <p class="pokemon-id">#${pokeId}</p>
+                <h2 class="pokemon-nombre">${poke.name}</h2>
+            </div>
+            <div class="pokemon-tipos">
+                ${tipos}
+            </div>
+            <div class="pokemon-stats">
+                <p class="stat">${poke.height}m</p>
+                <p class="stat">${poke.weight}kg</p>
+            </div>
+        </div>
+    `;
+    listaPokemon.append(div);
+}
+
+botonesHeader.forEach(boton => boton.addEventListener("click", (event) => {
+    const botonId = event.currentTarget.id;
+
+    listaPokemon.innerHTML = "";
+
+    for (let i = 1; i <= 151; i++) {
+        fetch(URL + i)
+            .then((response) => response.json())
+            .then(data => {
+
+                if(botonId === "ver-todos") {
+                    mostrarPokemon(data);
+                } else {
+                    const tipos = data.types.map(type => type.type.name);
+                    if (tipos.some(tipo => tipo.includes(botonId))) {
+                        mostrarPokemon(data);
+                    }
+                }
+
+            })
+    }
+}))
+
+
+
 
