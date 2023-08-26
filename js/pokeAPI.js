@@ -40,6 +40,7 @@ function mostrarPokemon(poke) {
                 <p class="stat">${poke.height}m</p>
                 <p class="stat">${poke.weight}kg</p>
             </div>
+            
         </div>
     `;
     listaPokemon.append(div);
@@ -71,3 +72,17 @@ botonesHeader.forEach(boton => boton.addEventListener("click", (event) => {
 
 
 
+// const verMasBtn = document.getElementById('VerMasBtn');
+// const tabGallery = document.getElementById('TabGallery');
+// const card = document.getElementById('card');
+// const cerrarCardBtn = document.querySelector('i');
+
+// verMasBtn.addEventListener('click', () => {
+//     tabGallery.style.display = 'block';
+//     card.style.display = 'flex';
+// });
+
+// cerrarCardBtn.addEventListener('click', () => {
+//     tabGallery.style.display = 'none';
+//     card.style.display = 'none';
+// });

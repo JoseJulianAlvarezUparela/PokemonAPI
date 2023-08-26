@@ -54,7 +54,7 @@ header {
 }
 
 img {
-    width: 40vw;
+    width: 20vw;
     margin-right: auto;
     margin-left: auto;
 }
@@ -76,7 +76,7 @@ img {
     gap: .5rem;
 }
 
-.btn-header {
+.btn-color, .btn-header {
     background-color: var(--clr-gray);
     padding: .5rem;
     border-radius: 100vmax;
@@ -87,7 +87,7 @@ img {
     transition: .2s;
 }
 
-.btn-header:hover {
+.btn-color, .btn-header:hover {
     transform: scale(1.1);
     box-shadow: 0 0 2rem rgba(0, 0, 0, .25);
 }
@@ -314,7 +314,7 @@ main {
     background-color: var(--type-electric);
     border-radius: 3rem;
 
-    display: none;
+     display: none; 
 }
 
 
@@ -352,3 +352,4 @@ main {
     height: 50vh;
     width: auto;
 }
+
